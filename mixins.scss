@@ -1,0 +1,44 @@
+/* Mixins
+ =================== */
+
+// Transition
+
+@mixin transition($value...) {
+    transition: $value;
+    -webkit-transition: $value;
+    -ms-transition: $value;
+    -moz-transition: $value;
+}
+
+
+// Font-size: convert px to rem
+
+@mixin font-size($value) {
+    font-size: $value + px;
+    font-size: $value / $root-font-size + rem;
+}
+
+
+// Spacing: convert px to rem
+
+@mixin px-to-rem-spacing($property, $value1, $value2, $value3, $value4) {
+    #{$property}: $value1 + px + " " + $value2 + px + " " + $value3 + px + " " + $value4 + px;
+    #{$property}: ($value1 / $root-font-size + rem) + " " + ($value2 / $root-font-size + rem) + " " + ($value3 / $root-font-size + rem) + " " + ($value4 / $root-font-size + rem);
+}
+
+
+// Function that converts any unit in rem
+
+$baseFontSize: 16;
+
+@function rem($pixels, $context: $baseFontSize) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+ 
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return $pixels / $context * 1rem;
+}
