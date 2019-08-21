@@ -1,17 +1,4 @@
-/* Mixins
- =================== */
-
-// Transition
-
-@mixin transition($value...) {
-    transition: $value;
-    -webkit-transition: $value;
-    -ms-transition: $value;
-    -moz-transition: $value;
-}
-
-
-// Font-size: convert px to rem
+// Mixin font-size: convert px to rem
 
 @mixin font-size($value) {
     font-size: $value + px;
@@ -19,7 +6,7 @@
 }
 
 
-// Spacing: convert px to rem
+// Mixin px-to-rem-spacing: convert px to rem
 
 @mixin px-to-rem-spacing($property, $value1, $value2, $value3, $value4) {
     #{$property}: $value1 + px + " " + $value2 + px + " " + $value3 + px + " " + $value4 + px;
@@ -27,7 +14,7 @@
 }
 
 
-// Function that converts any unit in rem
+// Function rem: converts any unit in rem
 
 $baseFontSize: 16;
 
@@ -41,4 +28,14 @@ $baseFontSize: 16;
 	}
 
 	@return $pixels / $context * 1rem;
+}
+
+
+// Function calc-rem: converts pixle unit to rem
+
+$root-font-size-new: 16px;
+
+@function calc-rem($pixels) {
+	// @return ($pixels / $root-font-size-new) * 1rem;
+	@return #{$pixels / $root-font-size-new}rem;
 }
