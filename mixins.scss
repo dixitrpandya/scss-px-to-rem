@@ -11,6 +11,7 @@ h1 {
 	@include font-size(15);
 }
 
+
 // ====================================================
 // Mixin px-to-rem-spacing: convert px to rem
 // ====================================================
@@ -23,6 +24,7 @@ h1 {
 h1 {
 	@include px-to-rem-spacing(padding, 10, 12, 14, 16);
 }
+
 
 // ====================================================
 // Function rem: converts any unit in rem
