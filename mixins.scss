@@ -1,20 +1,32 @@
+// ====================================================
 // Mixin font-size: convert px to rem
+// ====================================================
 
 @mixin font-size($value) {
     font-size: $value + px;
     font-size: $value / $root-font-size + rem;
 }
 
+h1 {
+	@include font-size(15);
+}
 
+// ====================================================
 // Mixin px-to-rem-spacing: convert px to rem
+// ====================================================
 
 @mixin px-to-rem-spacing($property, $value1, $value2, $value3, $value4) {
     #{$property}: $value1 + px + " " + $value2 + px + " " + $value3 + px + " " + $value4 + px;
     #{$property}: ($value1 / $root-font-size + rem) + " " + ($value2 / $root-font-size + rem) + " " + ($value3 / $root-font-size + rem) + " " + ($value4 / $root-font-size + rem);
 }
 
+h1 {
+	@include px-to-rem-spacing(padding, 10, 12, 14, 16);
+}
 
+// ====================================================
 // Function rem: converts any unit in rem
+// ====================================================
 
 $baseFontSize: 16;
 
@@ -30,12 +42,22 @@ $baseFontSize: 16;
 	@return $pixels / $context * 1rem;
 }
 
+h1 {
+	font-size: rem(8);
+}
 
+
+// ====================================================
 // Function calc-rem: converts pixle unit to rem
+// ====================================================
 
 $root-font-size-new: 16px;
 
 @function calc-rem($pixels) {
-	// @return ($pixels / $root-font-size-new) * 1rem;
+	// @return ($pixels / $root-font-size-new) * 1rem;   second style
 	@return #{$pixels / $root-font-size-new}rem;
+}
+
+h1 {
+	font-size: calc-rem(8px);
 }
