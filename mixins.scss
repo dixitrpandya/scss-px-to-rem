@@ -23,9 +23,11 @@ h1 {
 }
 
 
-// ====================================================
-// Mixin font-size: converts px to rem
-// ====================================================
+// ========================================================
+// Mixin font-size: converts px to rem with pixle fallback
+// =======================================================
+
+$root-font-size: 16;
 
 @mixin font-size($value) {
     font-size: $value + px;
@@ -37,9 +39,11 @@ h1 {
 }
 
 
-// ====================================================
-// Mixin px-to-rem-spacing: converts px to rem
-// ====================================================
+// ===============================================================
+// Mixin px-to-rem-spacing: converts px to rem with pixle fallback
+// ============================================================
+
+$root-font-size: 16;
 
 @mixin px-to-rem-spacing($property, $value1, $value2, $value3, $value4) {
     #{$property}: $value1 + px + " " + $value2 + px + " " + $value3 + px + " " + $value4 + px;
