@@ -1,5 +1,5 @@
 // ====================================================
-// Mixin font-size: convert px to rem
+// Mixin font-size: converts px to rem
 // ====================================================
 
 @mixin font-size($value) {
@@ -13,7 +13,7 @@ h1 {
 
 
 // ====================================================
-// Mixin px-to-rem-spacing: convert px to rem
+// Mixin px-to-rem-spacing: converts px to rem
 // ====================================================
 
 @mixin px-to-rem-spacing($property, $value1, $value2, $value3, $value4) {
@@ -46,6 +46,7 @@ $baseFontSize: 16;
 
 h1 {
 	font-size: rem(8);
+	padding: rem(10);
 }
 
 
@@ -62,4 +63,29 @@ $root-font-size-new: 16px;
 
 h1 {
 	font-size: calc-rem(8px);
+}
+
+
+// ====================================================
+// Function responsive rem: converts pixle unit to rem
+// ====================================================
+
+@function rem($pixles, $context-size: 16) {
+    @return #{$pixles / $context-size}rem;
+}
+
+@mixin responsivefonts($x, $y, $z) {
+	font-size: rem($x);
+	
+	@media (max-width: 1200px) {
+		font-size: rem($y);
+	}
+	
+	@media (max-width: 1200px) {
+		font-size: rem($z);
+	}
+}
+
+h1 {
+	@include responsivefonts(32, 28, 22);
 }
