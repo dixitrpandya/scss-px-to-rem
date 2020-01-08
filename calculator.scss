@@ -6,20 +6,20 @@
     @return #{$pixles / $context-size}rem;
 }
 
-@mixin responsivefonts($x, $y, $z) {
-	font-size: rem($x);
+@mixin fonts($desktop, $tablet, $mobile) {
+	font-size: rem($desktop);
 	
-	@media (max-width: 1200px) {
-		font-size: rem($y);
+	@media (max-width: 991.98px) {
+		font-size: rem($tablet);
 	}
 	
-	@media (max-width: 1200px) {
-		font-size: rem($z);
+	@media (max-width: 767.98px) {
+		font-size: rem($mobile);
 	}
 }
 
 h1 {
-	@include responsivefonts(32, 28, 22);
+	@include fonts(38, 28, 18);
 }
 
 
