@@ -1,4 +1,29 @@
 // ====================================================
+// Mixin responsive rem: converts pixle unit to rem
+// ====================================================
+
+@function rem($pixles, $context-size: 16) {
+    @return #{$pixles / $context-size}rem;
+}
+
+@mixin responsivefonts($x, $y, $z) {
+	font-size: rem($x);
+	
+	@media (max-width: 1200px) {
+		font-size: rem($y);
+	}
+	
+	@media (max-width: 1200px) {
+		font-size: rem($z);
+	}
+}
+
+h1 {
+	@include responsivefonts(32, 28, 22);
+}
+
+
+// ====================================================
 // Mixin font-size: converts px to rem
 // ====================================================
 
@@ -63,29 +88,4 @@ $root-font-size-new: 16px;
 
 h1 {
 	font-size: calc-rem(8px);
-}
-
-
-// ====================================================
-// Function responsive rem: converts pixle unit to rem
-// ====================================================
-
-@function rem($pixles, $context-size: 16) {
-    @return #{$pixles / $context-size}rem;
-}
-
-@mixin responsivefonts($x, $y, $z) {
-	font-size: rem($x);
-	
-	@media (max-width: 1200px) {
-		font-size: rem($y);
-	}
-	
-	@media (max-width: 1200px) {
-		font-size: rem($z);
-	}
-}
-
-h1 {
-	@include responsivefonts(32, 28, 22);
 }
